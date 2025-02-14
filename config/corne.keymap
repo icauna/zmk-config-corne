@@ -12,7 +12,7 @@
 
 #define DEFAULT 0
 #define COLEMAK 1
-#define NUMSYM  2
+//#define NUMSYM  2
 //#define NAV     3
 //#define MEDIA   4
 //#define MOUSE   5
@@ -47,40 +47,23 @@
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &mt LCTRL A    &mt LALT S     &mt LGUI D     &mt LSHIFT F   &kp G             &kp H          &mt RSHIFT J   &mt RGUI K     &mt RALT L     &mt RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NUMSYM BSPC &kp RET           &kp TAB        &kp SPACE      &kp SEMI
+                                  &kp ESC       &lt COLEMAK BSPC &kp RET           &kp TAB        &kp SPACE      &kp SEMI
 //                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
 
-                lower_layer {
+        colemak_layer {
 // -----------------------------------------------------------------------------------------
-// | !     |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |
-// | BT1   | BT2 | BT3 | BT4 | BT5 |     | LFT | DWN |  UP | RGT |     |
-// | BTCLR |     |     |     |     |     |     |     |     |     |     |
-//               | GUI |     | SPC |     | ENT | ESC | TAB |
-                        display-name = "Lower";
-                        bindings = <
-   &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT        &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR
-   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &trans 
-   &bt BT_CLR   &trans       &trans       &trans       &trans           &trans    &trans    &trans          &trans    &trans 
-                             &kp LGUI     &trans       &kp SPACE        AS(RET)   &kp ESC   &kp TAB
-                        >;
-                };
-
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// | 1! |  2@ |  3# |  4$ |  5% |     |  6^ |  7& |  8* |  9(  |  0)  |
-// | -_ |  =+ |  {  |  [  |  (  |     |  )  |  ]  |  }  |  /?  |  \|  |
-// | `~ |     |     |  ,< |  :  |     |  ;  |  .> | CTRL| META |      |
-//            | GUI | ESC | SPC |     | ENT |     | TAB |
-                        display-name = "Raise";
-                        bindings = <
-
-   AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        AS(N6)    AS(N7)    AS(N8)    AS(N9)   AS(N0)
-   AS(MINUS) AS(EQUAL) &kp LBRC  &kp LBKT  &kp LPAR      &kp RPAR  &kp RBKT  &kp RBRC  AS(FSLH) AS(BSLH)
-   AS(GRAVE) &trans    &trans    AS(COMMA) &kp COLON     &kp SEMI  AS(DOT)   &kp LCTRL &kp RALT &trans
-                       &kp LGUI  &kp ESC   &kp SPACE     AS(RET)   &trans    &kp TAB
-                        >;
-                };
+// |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  '  |
+// |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |
+// |  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  /  |
+//             | ESC | BSP | RET |     | TAB | SPC |  ;  |
+            bindings = <
+    &kp Q          &kp W          &kp F          &kp P          &kp B             &kp J          &kp L          &kp U          &kp Y          &kp SQT
+    &mt LCTRL A    &mt LALT R     &mt LGUI S     &mt LSHIFT T   &kp G             &kp M          &mt RSHIFT N   &mt RGUI E     &mt RALT I     &mt RCTRL O
+    &kp Z          &kp X          &kp C          &kp D          &kp V             &kp K          &kp H          &kp COMMA      &kp DOT        &kp FSLH
+                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
+            >;
+        };
     };
 };
