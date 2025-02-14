@@ -12,7 +12,7 @@
 
 #define DEFAULT 0
 #define COLEMAK 1
-#define NUMSYM  2
+#define NS  2
 //#define NAV     3
 //#define MEDIA   4
 //#define MOUSE   5
@@ -47,7 +47,7 @@
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &mt LCTRL A    &mt LALT S     &mt LGUI D     &mt LSHIFT F   &kp G             &kp H          &mt RSHIFT J   &mt RGUI K     &mt RALT L     &mt RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NUMSYM BSPC &kp RET           &kp TAB        &kp SPACE      &kp SEMI
+                                  &kp ESC       &lt NS BSPC &kp RET           &kp TAB        &kp SPACE      &kp SEMI
 //                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
@@ -62,12 +62,12 @@
     &kp Q          &kp W          &kp F          &kp P          &kp B             &kp J          &kp L          &kp U          &kp Y          &kp SQT
     &mt LCTRL A    &mt LALT R     &mt LGUI S     &mt LSHIFT T   &kp G             &kp M          &mt RSHIFT N   &mt RGUI E     &mt RALT I     &mt RCTRL O
     &kp Z          &kp X          &kp C          &kp D          &kp V             &kp K          &kp H          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NUMSYM BSPC          &kp RET           &kp TAB        &kp SPACE      &kp SEMI
+                                  &kp ESC       &lt NS BSPC          &kp RET           &kp TAB        &kp SPACE      &kp SEMI
 //                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
 
-        numsym_layer {
+        ns_layer {
 // -----------------------------------------------------------------------------------------
 // |  *  |  7  |  8  |  9  |  +  |     |  #  |  &  |  _  |  %  |  $  |
 // |  .  |  4  |  5  |  6  |  0  |     |  =  |  (  |  )  |  [  |  ]  |
