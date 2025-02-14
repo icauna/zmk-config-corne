@@ -76,8 +76,8 @@
             bindings = <
     &kp STAR       &kp KP_N7      &kp KP_N8      &kp KP_N9      &kp KP_PLUS       &kp HASH       &kp AMPS       &kp UNDER      &kp PRCNT      &kp DLLR
     &kp KP_DOT     &kp KP_N4      &kp KP_N5      &kp KP_N6      &kp KP_N0         &kp EQUAL    &mt RSHIFT LPAR  &mt RGUI RPAR  &mt RALT LBKT  &mt RCTRL RBKT
-    &kp KP_DIVIDE  &kp KP_N1      &kp KP_N2      &kp KP_N3      &kp KP_MINUS      &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &none          &trans         &none             &kp TAB        &kp SPACE      &kp SEMI
+    &kp KP_DIVIDE  &kp KP_N1      &kp KP_N2      &kp KP_N3      &kp KP_MINUS      &kp EXCL       &kp LBRC       &kp RBRC       &kp AT         &kp CARET
+                                  &none          &trans         &none             AS(BSLH)       &kp SPACE      AS(GRAVE)
             >;
         };
     };
