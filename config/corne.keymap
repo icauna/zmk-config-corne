@@ -18,6 +18,10 @@
 #define MOUSE   5
 
 / {
+        chosen {
+                zmk,physical-layout = &foostan_corne_5col_layout;
+        };
+
         behaviors {
                 td_pe: tap_dance_plus_equal {
                     compatible = "zmk,behavior-tap-dance";
