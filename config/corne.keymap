@@ -12,7 +12,7 @@
 
 #define DEFAULT 0
 #define COLEMAK 1
-#define NS  2
+//#define NS  2
 //#define NAV     3
 //#define MEDIA   4
 //#define MOUSE   5
@@ -47,7 +47,7 @@
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &mt LCTRL A    &mt LALT S     &mt LGUI D     &mt LSHIFT F   &kp G             &kp H          &mt RSHIFT J   &mt RGUI K     &mt RALT L     &mt RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NS BSPC &kp RET           &kp TAB        &kp SPACE      &kp SEMI
+                                  &kp ESC       &kp BSPC &kp KP_N1           &kp TAB        &kp SPACE      &kp SEMI
 //                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
@@ -62,23 +62,8 @@
     &kp Q          &kp W          &kp F          &kp P          &kp B             &kp J          &kp L          &kp U          &kp Y          &kp SQT
     &mt LCTRL A    &mt LALT R     &mt LGUI S     &mt LSHIFT T   &kp G             &kp M          &mt RSHIFT N   &mt RGUI E     &mt RALT I     &mt RCTRL O
     &kp Z          &kp X          &kp C          &kp D          &kp V             &kp K          &kp H          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NS BSPC          &kp RET           &kp TAB        &kp SPACE      &kp SEMI
+                                  &kp ESC       &kp BSPC          &kp RET           &kp TAB        &kp SPACE      &kp SEMI
 //                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
-            >;
-        };
-
-        ns_layer {
-// -----------------------------------------------------------------------------------------
-// |  *  |  7  |  8  |  9  |  +  |     |  #  |  &  |  _  |  %  |  $  |
-// |  .  |  4  |  5  |  6  |  0  |     |  =  |  (  |  )  |  [  |  ]  |
-// |  /  |  1  |  2  |  3  |  -  |     |  !  |  {  |  }  |  @  |  ^  |
-//             |     |     |     |     |  \  | SPC |  `  |
-            bindings = <
-   &kp KP_MULTIPLY &kp KP_N7      &kp KP_N8      &kp KP_N9      &kp KP_PLUS       &kp HASH       &kp AMPS       &kp UNDER      &kp PRCNT      &kp DLLR
-    &kp KP_DOT     &kp KP_N4      &kp KP_N5      &kp KP_N6      &kp KP_0         &kp KP_EQUAL &kp LPAR   &kp RPAR  &kp LBKT  &kp RBKT
-//    &kp KP_DOT     &kp KP_N4      &kp KP_N5      &kp KP_N6      &kp KP_0         &kp KP_EQUAL &mt RSHIFT LPAR   &mt RGUI RPAR  &mt RALT LBKT  &mt RCTRL RBKT
-    &kp KP_DIVIDE  &kp KP_N1      &kp KP_N2      &kp KP_N3      &kp KP_MINUS      &kp EXCL       &kp LBRC       &kp RBRC       &kp AT         &kp CARET
-                                  &trans          &trans         &trans             AS(BSLH)       &kp SPACE      AS(GRAVE)
             >;
         };
     };
