@@ -8,117 +8,83 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
 
-#define DEFAULT 0
-#define COLEMAK 1
-#define NUMSYM  2
-#define NAV     3
-#define MEDIA   4
-#define MOUSE   5
+#define AS(keycode) &as LS(keycode) keycode
 
 / {
-        chosen {
-                zmk,physical-layout = &foostan_corne_5col_layout;
-        };
+    chosen {
+        zmk,physical-layout = &foostan_corne_5col_layout;
+    };
 
-        behaviors {
-//                td_pe: tap_dance_plus_equal {
-//                    compatible = "zmk,behavior-tap-dance";
-//                    #binding-cells = <0>;
-//                    tapping-term-ms = <200>;
-//                    bindings = <&kp KP_PLUS>, <&kp EQUAL>;
-//                };
-                as: auto_shift {
-                    compatible = "zmk,behavior-hold-tap";
-                    #binding-cells = <2>;
-                    tapping_term_ms = <135>;
-                    quick_tap_ms = <0>;
-                    flavor = "tap-preferred";
-                    bindings = <&kp>, <&kp>;
-                };
+    behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping_term_ms = <200>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
-
+    };
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |
-// |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  '  |
-// |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  |
-//             | ESC | BSP | RET |   | TAB | SPC |  ;  |
+// |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U   |  I   |  O   | P |
+// |  A  |  S  |  D  |  F  |  G  |     |  H  |  J   |  K   |  L   | ' | 
+// |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M   | CTRL | META | . |
+//             | GUI | LWR | SPC |     | ENT | RSE  | BSPC |
+                        display-name = "Base";
                         bindings = <
-    &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
-    &mt LCTRL A    &mt LALT S     &mt LGUI D     &mt LSHIFT F   &kp G             &kp H          &mt RSHIFT J   &mt RGUI K     &mt RALT L     &mt RCTRL SQT
-    &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
+   AS(Q) AS(W) AS(E) AS(R) AS(T)     AS(Y)   AS(U)  AS(I)     AS(O)     AS(P)
+   AS(A) AS(S) AS(D) AS(F) AS(G)     AS(H)   AS(J)  AS(K)     AS(L)     AS(SQT)
+   AS(Z) AS(X) AS(C) AS(V) AS(B)     AS(N)   AS(M)  &kp LCTL  &kp RALT  AS(DOT)
+        &kp LGUI &mo 1 &kp SPACE     AS(RET) &mo 2  &kp BSPC
                         >;
                 };
-                colemak_layer {
+
+                lower_layer {
 // -----------------------------------------------------------------------------------------
-// |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  '  |
-// |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |
-// |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  |
-//             | ESC | BSP | RET |   | TAB | SPC |  ;  |
+// | !     |  @  |  #  |  $  |  %  |     |  ^  |  &  |  *  |  (  |  )  |
+// | BT1   | BT2 | BT3 | BT4 | BT5 |     | LFT | DWN |  UP | RGT |     |
+// | BTCLR |     |     |     |     |     |     |     |     |     |     |
+//               | GUI |     | SPC |     | ENT | ESC | TAB |
+                        display-name = "Lower";
                         bindings = <
-    &kp Q          &kp W          &kp F          &kp P          &kp B             &kp J          &kp L          &kp U          &kp Y          &kp SQT
-    &mt LCTRL A    &mt LALT R     &mt LGUI S     &mt LSHIFT T   &kp G             &kp M          &mt RSHIFT N   &mt RGUI E     &mt RALT I     &mt RCTRL O
-    &kp Z          &kp X          &kp C          &kp D          &kp V             &kp K          &kp H          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
+   &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT        &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR
+   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &trans 
+   &bt BT_CLR   &trans       &trans       &trans       &trans           &trans    &trans    &trans          &trans    &trans 
+                             &kp LGUI     &trans       &kp SPACE        AS(RET)   &kp ESC   &kp TAB
                         >;
                 };
-                numsym_layer {
+
+                raise_layer {
 // -----------------------------------------------------------------------------------------
-// |  *  |  7  |  8  |  9  |  +  |   |  #  |  &  |  _  |  %  |  $  |
-// |  .  |  4  |  5  |  6  |  0  |   |  =  |  (  |  )  |  [  |  ]  |
-// |  /  |  1  |  2  |  3  |  -  |   |  !  |  {  |  }  |  @  |  ^  |
-//             |     |     |     |   |  \  | SPC |  `  |
+// | 1! |  2@ |  3# |  4$ |  5% |     |  6^ |  7& |  8* |  9(  |  0)  |
+// | -_ |  =+ |  {  |  [  |  (  |     |  )  |  ]  |  }  |  /?  |  \|  |
+// | `~ |     |     |  ,< |  :  |     |  ;  |  .> | CTRL| META |      |
+//            | GUI | ESC | SPC |     | ENT |     | TAB |
+                        display-name = "Raise";
                         bindings = <
-    &kp STAR       &kp KP_N7      &kp KP_N8      &kp KP_N9      &kp KP_PLUS       &kp HASH       &kp AMPS       &kp UNDER      &kp PRCNT      &kp DLLR
-    &kp KP_DOT     &kp KP_N4      &kp KP_N5      &kp KP_N6      &kp KP_0          &kp EQUAL   &mt RSHIFT LPAR   &mt RGUI RPAR  &mt RALT LBKT  &mt RCTRL RBKT
-    &kp KP_DIVIDE  &kp KP_N1      &kp KP_N2      &kp KP_N3      &kp KP_MINUS      &kp EXCL       &kp LBRC       &kp RBRC       &kp AT         &kp CARET
-                                  &none          &trans         &none             AS(BSLH)       &kp SPACE      AS(GRAVE)
+
+   AS(N1)    AS(N2)    AS(N3)    AS(N4)    AS(N5)        AS(N6)    AS(N7)    AS(N8)    AS(N9)   AS(N0)
+   AS(MINUS) AS(EQUAL) &kp LBRC  &kp LBKT  &kp LPAR      &kp RPAR  &kp RBKT  &kp RBRC  AS(FSLH) AS(BSLH)
+   AS(GRAVE) &trans    &trans    AS(COMMA) &kp COLON     &kp SEMI  AS(DOT)   &kp LCTRL &kp RALT &trans
+                       &kp LGUI  &kp ESC   &kp SPACE     AS(RET)   &trans    &kp TAB
                         >;
                 };
-                nav_layer {
-// -----------------------------------------------------------------------------------------
-// |     |     |     |     |     |   |PG_UP|HOME | UP  | END | INS |
-// |CTRL | ALT | GUI |SHFT |     |   |PG_DN|LEFT |DOWN |RIGHT| DEL |
-// |     |     |     |     |     |   | CUT | CPY | PST |UNDO |REDO |
-//             |     | CMK |CAPS |   |     |     |     |
-                        bindings = <
-    &none          &none          &none          &none          &none             &kp PG_UP      &kp HOME       &kp UP         &kp END        &kp INS
-    &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none             &kp PG_DN      &kp LEFT       &kp DOWN       &kp RIGHT      &kp DEL
-    &none          &none          &none          &none          &none             &kp K_CUT      &kp K_COPY     &kp K_PASTE    &kp K_UNDO     &kp K_REDO
-                                  &none          &tog COLEMAK   &kp CAPS          &none          &trans         &none
-                        >;
+
+                extra_1 {
+                        status = "reserved";
                 };
-                media_layer {
-// -----------------------------------------------------------------------------------------
-// | F1  | F2  | F3  | F4  |     |   |     |     |DP_DN|DP_UP|     |
-// | F5  | F6  | F7  | F8  |     |   |     |MUTE |V_DN |V_UP |     |
-// | F9  | F10 | F11 | F12 |     |   |     | P/P |PREV |NEXT |     |
-//             |     |     |     |   |     |     |     |
-                        bindings = <
-    &kp F1         &kp F2         &kp F3         &kp F4         &none             &none          &none          &kp C_BRI_DN   &kp C_BRI_UP   &none
-    &kp F5         &kp F6         &kp F7         &kp F8         &none             &none          &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none
-    &kp F9         &kp F10        &kp F11        &kp F12        &none             &none          &kp C_PP       &kp C_PREV     &kp C_NEXT     &none
-                                  &none          &none          &none             &trans         &none          &none
-                        >;
+
+                extra_2 {
+                        status = "reserved";
                 };
-                mouse_layer {
-// -----------------------------------------------------------------------------------------
-// |     |     |     |     |     |   |SC_UP|SC_L | MUP |SC_R |     |
-// |CTRL | ALT | GUI |SHFT |     |   |SC_DN|MLEFT|MDOWN|MRGHT|     |
-// |     |     |     |     |     |   | CUT | CPY | PST |UNDO |REDO |
-//             |     |     |     |   |RCLK |LCLK |MCLK |
-                        bindings = <
-    &none          &none          &none          &none          &none             &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP  &msc SCRL_RIGHT  &none
-    &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none           &msc SCRL_DOWN  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT  &none
-    &none          &none          &none          &none          &none             &kp K_CUT      &kp K_COPY     &kp K_PASTE    &kp K_UNDO     &kp K_REDO
-                                  &none          &none          &trans            &mkp RCLK      &mkp LCLK      &mkp MCLK
-                        >;
+
+                extra_3 {
+                        status = "reserved";
                 };
         };
 };
