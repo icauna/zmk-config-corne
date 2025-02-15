@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define AS(keycode) &as LS(keycode) keycode
 
@@ -15,7 +16,7 @@
 #define NUMSYM  2
 #define NAV     3
 #define MEDIA   4
-//#define MOUSE   5
+#define MOUSE   5
 
 
 / {
@@ -54,8 +55,7 @@
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &mt LCTRL A    &mt LALT S     &mt LGUI D     &mt LSHIFT F   &kp G             &kp H          &mt RSHIFT J   &mt RGUI K     &mt RALT L     &mt RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NUMSYM BSPC &kp KP_N1           &lt MEDIA TAB        &lt NAV SPACE      &kp SEMI
-//                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
+                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
 
@@ -69,8 +69,7 @@
     &kp Q          &kp W          &kp F          &kp P          &kp B             &kp J          &kp L          &kp U          &kp Y          &kp SQT
     &mt LCTRL A    &mt LALT R     &mt LGUI S     &mt LSHIFT T   &kp G             &kp M          &mt RSHIFT N   &mt RGUI E     &mt RALT I     &mt RCTRL O
     &kp Z          &kp X          &kp C          &kp D          &kp V             &kp K          &kp H          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &kp BSPC          &kp RET           &kp TAB        &kp SPACE      &kp SEMI
-//                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
+                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
 
@@ -113,6 +112,20 @@
     &kp F6         &kp F7         &kp F8         &kp F9         &kp F10           &none          &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none
     &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &kp C_PP       &kp C_PREV     &kp C_NEXT     &none
                                   &none          &none          &none             &trans         &none          &none
+            >;
+        };
+
+        mouse_layer {
+// -----------------------------------------------------------------------------------------
+// |     |     |     |     |     |     |SC_UP|SC_L | MUP |SC_R |     |
+// |CTRL | ALT | GUI |SHFT |     |     |SC_DN|MLEFT|MDOWN|MRGHT|     |
+// |     |     |     |     |     |     | CUT | CPY | PST |UNDO |REDO |
+//             |     |     |     |     |LCLK |MCLK |RCLK |
+            bindings = <
+    &none          &none          &none          &none          &none             &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP  &msc SCRL_RIGHT &none
+    &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none            &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none
+    &none          &none          &none          &none          &none             &kp K_CUT      &kp C_AC_COPY  &kp K_PASTE    &kp K_UNDO     &kp C_AC_REDO
+                                  &none          &none          &trans            &mkp LCLK      &mkp MCLK      &mkp RCLK
             >;
         };
     };
