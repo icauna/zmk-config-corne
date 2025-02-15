@@ -117,12 +117,12 @@
 
         mouse_layer {
 // -----------------------------------------------------------------------------------------
-// |     |     |     |     |     |     |SC_UP|SC_L | MUP |SC_R |     |
+// | BT1 | BT2 | BT3 | BT4 |BTCLR|     |SC_UP|SC_L | MUP |SC_R |     |
 // |CTRL | ALT | GUI |SHFT |     |     |SC_DN|MLEFT|MDOWN|MRGHT|     |
 // |     |     |     |     |     |     | CUT | CPY | PST |UNDO |REDO |
 //             |     |     |     |     |LCLK |MCLK |RCLK |
             bindings = <
-    &none          &none          &none          &none          &none             &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP  &msc SCRL_RIGHT &none
+    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_CLR        &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP  &msc SCRL_RIGHT &none
     &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none            &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none
     &none          &none          &none          &none          &none             &kp K_CUT      &kp C_AC_COPY  &kp K_PASTE    &kp K_UNDO     &kp C_AC_REDO
                                   &none          &none          &trans            &mkp LCLK      &mkp MCLK      &mkp RCLK
