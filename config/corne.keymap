@@ -14,7 +14,7 @@
 #define COLEMAK 1
 #define NUMSYM  2
 #define NAV     3
-//#define MEDIA   4
+#define MEDIA   4
 //#define MOUSE   5
 
 
@@ -54,7 +54,7 @@
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &mt LCTRL A    &mt LALT S     &mt LGUI D     &mt LSHIFT F   &kp G             &kp H          &mt RSHIFT J   &mt RGUI K     &mt RALT L     &mt RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &kp ESC       &lt NUMSYM BSPC &kp KP_N1           &kp TAB        &lt NAV SPACE      &kp SEMI
+                                  &kp ESC       &lt NUMSYM BSPC &kp KP_N1           &lt MEDIA TAB        &lt NAV SPACE      &kp SEMI
 //                                  &kp ESC     &lt NUMSYM BSPC   &lt MOUSE RET     &lt MEDIA TAB  &lt NAV SPACE  &kp SEMI
             >;
         };
@@ -99,6 +99,20 @@
     &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none             &kp PG_DN      &kp LEFT       &kp DOWN       &kp RIGHT      &kp DEL
     &none          &none          &none          &none          &none             &kp K_CUT      &kp C_AC_COPY  &kp K_PASTE    &kp K_UNDO     &kp C_AC_REDO
                                   &none          &tog COLEMAK   &kp CAPS          &none          &trans         &none
+            >;
+        };
+
+        media_layer {
+// -----------------------------------------------------------------------------------------
+// | F1  | F2  | F3  | F4  | F5  |     |     |     |DP_DN|DP_UP|     |
+// | F6  | F7  | F8  | F9  | F10 |     |     |MUTE |V_DN |V_UP |     |
+// | F11 | F12 | F13 | F14 | F15 |     |     | P/P |PREV |NEXT |     |
+//             |     |     |     |     |     |     |     |
+            bindings = <
+    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5            &none          &none          &kp C_BRI_DN   &kp C_BRI_UP   &none
+    &kp F6         &kp F7         &kp F8         &kp F9         &kp F10           &none          &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none
+    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &kp C_PP       &kp C_PREV     &kp C_NEXT     &none
+                                  &none          &none          &none             &trans         &none          &none
             >;
         };
     };
