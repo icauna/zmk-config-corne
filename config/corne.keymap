@@ -19,13 +19,15 @@
 #define MOUSE   5
 
 
+&lt {
+    tapping-term-ms = <135>;
+    quick-tap-ms = <135>;
+};
+
+
 / {
     chosen {
         zmk,physical-layout = &foostan_corne_5col_layout;
-    };
-
-    &lt {
-        tapping-term-ms = <200>;
     };
 
     behaviors {
