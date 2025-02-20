@@ -19,12 +19,6 @@
 #define MOUSE   5
 
 
-&lt {
-    tapping-term-ms = <135>;
-    quick-tap-ms = <135>;
-};
-
-
 / {
     chosen {
         zmk,physical-layout = &foostan_corne_5col_layout;
@@ -55,9 +49,18 @@
             hold-trigger-on-release;
         };
 
+        lt: layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+        };
+
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
-            flavor = "tap-preferred";
+            flavor = "balanced";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
             tapping-term-ms = <135>;
@@ -67,7 +70,7 @@
         td_pe: tap_dance_plus_equal {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            bindings = <&kp KP_PLUS>, <&kp EQUAL>;
+            bindings = <&kp PLUS>, <&kp EQUAL>;
             tapping-term-ms = <135>;
         };
     };
@@ -110,9 +113,9 @@
 // |  /  |  1  |  2  |  3  |  -  |     |  !  |  {  |  }  |  @  |  ^  |
 //             |     |     |     |     |  \  | SPC |  `  |
             bindings = <
-    &kp STAR       &kp KP_N7      &kp KP_N8      &kp KP_N9      &td_pe            &kp HASH       &kp AMPS       &kp UNDER      &kp PRCNT      &kp DLLR
-    &kp KP_DOT     &kp KP_N4      &kp KP_N5      &kp KP_N6      &kp KP_N0         &kp EQUAL    &hmr RSHIFT LPAR &hmr RGUI RPAR &hmr RALT LBKT &hmr RCTRL RBKT
-    &kp KP_DIVIDE  &kp KP_N1      &kp KP_N2      &kp KP_N3      &kp KP_MINUS      &kp EXCL       &kp LBRC       &kp RBRC       &kp AT         &kp CARET
+    &kp STAR       &kp N7         &kp N8         &kp N9         &td_pe            &kp HASH       &kp AMPS       &kp UNDER      &kp PRCNT      &kp DLLR
+    &kp DOT        &kp N4         &kp N5         &kp N6         &kp N0            &kp EQUAL    &hmr RSHIFT LPAR &hmr RGUI RPAR &hmr RALT LBKT &hmr RCTRL RBKT
+    &kp FSLH       &kp N1         &kp N2         &kp N3         &kp MINUS         &kp EXCL       &kp LBRC       &kp RBRC       &kp AT         &kp CARET
                                   &none          &none          &trans            &kp SPACE      AS(BSLH)       AS(GRAVE)
             >;
         };
