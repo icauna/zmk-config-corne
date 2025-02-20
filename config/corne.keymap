@@ -77,7 +77,7 @@
 //             | ESC | BSP | RET |     | TAB | SPC |  ;  |
             bindings = <
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
-    &hml LCTRL A   &hml LALT S    &hml LGUI D    &hml LSHIFT F  &kp G             &kp H          &hmr RSHIFT J  &hmr RGUI K    &hmt RALT L    &hmr RCTRL SQT
+    &hml LCTRL A   &hml LALT S    &hml LGUI D    &hml LSHIFT F  &kp G             &kp H          &hmr RSHIFT J  &hmr RGUI K    &hmr RALT L    &hmr RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
                                   &kp ESC        &lt MOUSE RET  &lt NUMSYM BSPC   &lt NAV SPACE  &lt MEDIA TAB  &kp SEMI
             >;
