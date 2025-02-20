@@ -49,6 +49,11 @@
             hold-trigger-on-release;
         };
 
+        &lt {
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+        };
+
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
             flavor = "tap-preferred";
