@@ -15,14 +15,19 @@
 #define COLEMAK 1
 #define NUMSYM  2
 #define NAV     3
-#define MEDIA   4
-#define MOUSE   5
+#define MOUSE   4
+#define MEDIA   5
 
 
 &lt {
     flavor = "balanced";
     tapping-term-ms = <200>;
     quick-tap-ms = <200>;
+};
+
+&sk {
+    release-after-ms = <900>;
+    quick-release;
 };
 
 
@@ -65,18 +70,11 @@
             quick-tap-ms = <200>;
         };
 
-        td_ht_edc: tap_dance_hold_tap_equal_dot_comma {
-            compatible = "zmk,behavior-tap-dance";
+        mm_sft: mod_morph_shift {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&ht EQUAL DOT>, <&kp COMMA>;
-            tapping-term-ms = <200>;
-        };
-
-        td_ht_stc: tap_dance_hold_tap_shift_tab_caps {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            bindings = <&ht LSHIFT TAB>, <&kp CAPS>;
-            tapping-term-ms = <200>;
+            bindings = <&sk LSHIFT>, <&caps_word>;
+            mods = <(MOD_LSFT)>;
         };
     };
     
@@ -88,12 +86,12 @@
 // |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |
 // |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  '  |
 // |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  /  |
-//             |     | TAB | BSP |     | SPC | RET | ESC |
+//             | TAB | SFT | BSP |     | SPC | RET | ESC |
             bindings = <
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &hml LCTRL A   &hml LALT S    &hml LGUI D    &hml LSHIFT F  &kp G             &kp H          &hmr RSHIFT J  &hmr RGUI K    &hmr RALT L    &hmr RCTRL SQT
-    &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-                                  &mo MOUSE      &td_ht_stc     &lt NUMSYM BSPC   &lt NAV SPACE  &lt MEDIA RET  &kp ESC
+    &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          AS(COMMA)      AS(DOT)        AS(FSLH)
+                                  &lt MOUSE TAB  &mm_sft     &lt NUMSYM BSPC   &lt NAV SPACE  &lt MEDIA RET  &kp ESC
             >;
         };
 
@@ -113,15 +111,15 @@
 
         numsym_layer {
 // -----------------------------------------------------------------------------------------
-// |  *  |  7  |  8  |  9  |  +  |     |  \  |  (  |  )  |  <  |  >  |
-// |  0  |  4  |  5  |  6  |  .  |     |  :  |  =  |  _  |  "  |  #  |
-// |  /  |  1  |  2  |  3  |  -  |     |  ;  |  [  |  ]  |  &  |  |  |
-//             |     |     |     |     | SPC | RET |  `  |
+// |  *  |  7  |  8  |  9  |  +  |     |  `  |  (  |  )  |  <  |  >  |
+// |  0  |  4  |  5  |  6  |  .  |     |  &  |  _  |  =  |  "  |  '  |
+// |  /  |  1  |  2  |  3  |  -  |     |  |  |  [  |  ]  |  :  |  ;  |
+//             |     |     |trans|     | SPC | RET | tog |
             bindings = <
-    &kp STAR       &kp N7         &kp N8         &kp N9         &kp PLUS          &kp BSLH       &kp LPAR       &kp RPAR       &kp LT         &kp GT
-    &ht RET N0     &kp N4         &kp N5         &kp N6         &td_ht_edc        &kp COLON  &hmr RSHIFT EQUAL  &hmr RGUI UNDER  &hmr RALT DQT  &hmr RCTRL HASH
-    &kp FSLH       &kp N1         &kp N2         &kp N3         &kp MINUS         &kp SEMI       AS(LBKT)       AS(RBKT)       &kp AMPS       &kp PIPE
-                                  &none          &none          &trans            &kp SPACE      &kp RET        AS(GRAVE)
+    &kp STAR       AS(N7)         AS(N8)         AS(N9)         &ht EQUAL PLUS    AS(GRAVE)      &kp LPAR       &kp RPAR       &kp LT         &kp GT
+    &ht RET N0     AS(N4)         AS(N5)         AS(N6)         &ht COMMA DOT     &kp AMPS  &hmr RSHIFT UNDER  &hmr RGUI EQUAL  &hmr RALT DQT  &hmr RCTRL SQT
+    &ht BSLH FSLH  AS(N1)         AS(N2)         AS(N3)         AS(MINUS)         &kp PIPE       AS(LBKT)       AS(RBKT)       &kp COLON      &kp SEMI
+                                  &none          &none          &trans            &kp SPACE      &kp RET        &tog NUMSYM
             >;
         };
 
@@ -130,7 +128,7 @@
 // |     |     |     |     |     |     |PG_UP|HOME | UP  | END | INS |
 // |CTRL | ALT | GUI |SHFT |     |     |PG_DN|LEFT |DOWN |RIGHT| DEL |
 // |     |     |     |     |     |     | CUT | CPY | PST |UNDO |REDO |
-//             |     | CMK |CAPS |     |     |     |     |
+//             |     | CMK |     |     |trans|     |     |
             bindings = <
     &none          &none          &none          &none          &none             &kp PG_UP      &kp HOME       &kp UP         &kp END        &kp INS
     &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none             &kp PG_DN      &kp LEFT       &kp DOWN       &kp RIGHT      &kp DEL
@@ -139,31 +137,31 @@
             >;
         };
 
-        media_layer {
-// -----------------------------------------------------------------------------------------
-// | F1  | F2  | F3  | F4  | F5  |     |     |     |DP_DN|DP_UP|     |
-// | F6  | F7  | F8  | F9  | F10 |     |     |MUTE |V_DN |V_UP |     |
-// | F11 | F12 | F13 | F14 | F15 |     |     | P/P |PREV |NEXT |     |
-//             |     |     |     |     |     |     |     |
-            bindings = <
-    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5            &none          &none          &kp C_BRI_DN   &kp C_BRI_UP   &none
-    &kp F6         &kp F7         &kp F8         &kp F9         &kp F10           &none          &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none
-    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &kp C_PP       &kp C_PREV     &kp C_NEXT     &none
-                                  &none          &none          &none             &none          &trans         &none
-            >;
-        };
-
         mouse_layer {
 // -----------------------------------------------------------------------------------------
 // | BT1 | BT2 | BT3 | BT4 |BTCLR|     |SC_UP|SC_L | MUP |SC_R |     |
 // |CTRL | ALT | GUI |SHFT |     |     |SC_DN|MLEFT|MDOWN|MRGHT|     |
 // |     |     |     |     |     |     | CUT | CPY | PST |UNDO |REDO |
-//             |     |     |     |     |LCLK |MCLK |RCLK |
+//             |trans|     |     |     |LCLK |MCLK |RCLK |
             bindings = <
     &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_CLR        &msc SCRL_UP   &msc SCRL_LEFT &mmv MOVE_UP  &msc SCRL_RIGHT &none
     &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none            &msc SCRL_DOWN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none
     &none          &none          &none          &none          &none             &kp K_CUT      &kp C_AC_COPY  &kp K_PASTE    &kp K_UNDO     &kp C_AC_REDO
                                   &trans         &none          &none             &mkp LCLK      &mkp MCLK      &mkp RCLK
+            >;
+        };
+
+        media_layer {
+// -----------------------------------------------------------------------------------------
+// | F1  | F2  | F3  | F4  | F5  |     |     |     |DP_DN|DP_UP|     |
+// | F6  | F7  | F8  | F9  | F10 |     |     |MUTE |V_DN |V_UP |     |
+// | F11 | F12 | F13 | F14 | F15 |     |     | P/P |PREV |NEXT |     |
+//             |     |     | GLB |     |     |trans|     |
+            bindings = <
+    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5            &none          &none          &kp C_BRI_DN   &kp C_BRI_UP   &none
+    &kp F6         &kp F7         &kp F8         &kp F9         &kp F10           &none          &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none
+    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &kp C_PP       &kp C_PREV     &kp C_NEXT     &none
+                                  &none          &none          &kp GLOBE         &none          &trans         &none
             >;
         };
     };
