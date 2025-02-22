@@ -4,8 +4,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-// #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
-// #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -125,9 +126,9 @@
 // |  *  |  7  |  8  |  9  |  +  |     |  #  |  (  |  )  |  :  |  ;  |
 // |  0  |  4  |  5  |  6  |  .  |     |  ,  |  _  |  =  |  "  |  '  |
 // |  /  |  1  |  2  |  3  |  -  |     |  $  |  [  |  ]  |  %  |  ?  |
-//             |     |     |trans|     | SPC | RET |  `  |
+//             |     |     |trans|     | SPC | RET | ` |
             bindings = <
-    &kp STAR       AS(N7)         AS(N8)         AS(N9)         &kp PLUS          &kp HASH       &ht LT LPAR    &ht RT RPAR   &ht AMPS COLON  &ht PIPE SEMI
+    &kp STAR       AS(N7)         AS(N8)         AS(N9)         &kp PLUS          &kp HASH       &ht LT LPAR    &ht GT RPAR   &ht AMPS COLON  &ht PIPE SEMI
     &ht RET N0     AS(N4)         AS(N5)         AS(N6)         &ht EQUAL DOT   &kp COMMA  &hmr RSHIFT UNDER  &hmr RGUI EQUAL  &hmr RALT DQT  &hmr RCTRL SQT
     &ht BSLH FSLH  AS(N1)         AS(N2)         AS(N3)         &kp MINUS         &kp DLLR       AS(LBKT)       AS(RBKT)       &kp PRCNT      &ht EXCL QMARK
                                   &none          &none          &trans            &mm_st         &kp RET        AS(GRAVE)
@@ -139,13 +140,12 @@
 // |     |     |     |     |     |     |PG_UP|HOME | UP  | END | INS |
 // |CTRL | ALT | GUI |SHFT |     |     |PG_DN|LEFT |DOWN |RIGHT| DEL |
 // |REDO |UNDO | PST | CPY | CUT |     | CUT | CPY | PST |UNDO |REDO |
-//             |     |     |     |     |trans|     |     |
+//             |     | CMK |     |     |trans|     |     |
             bindings = <
-    &none          &none          &none          &none          &tog COLEMAK      &kp PG_UP      &kp HOME       &kp UP         &kp END        &kp INS
+    &none          &none          &none          &none          &none             &kp PG_UP      &kp HOME       &kp UP         &kp END        &kp INS
     &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none             &kp PG_DN      &kp LEFT       &kp DOWN       &kp RIGHT      &kp DEL
-    &none          &none          &none          &none          &none             &none          &none          &none          &none          &none
-//    &kp LG(Y)      &kp LG(Z)      &kp LG(V)      &kp LG(C)      &kp LG(X)         &kp RG(X)      &kp RG(C)      &kp RG(V)      &kp RG(Z)      &kp RG(Y)
-                                  &none          &none          &none             &trans         &none          &none
+    &kp LG(Y)      &kp LG(Z)      &kp LG(V)      &kp LG(C)      &kp LG(X)         &kp RG(X)      &kp RG(C)      &kp RG(V)      &kp RG(Z)      &kp RG(Y)
+                                  &none          &tog COLEMAK   &none             &trans         &none          &none
             >;
         };
 
@@ -153,20 +153,20 @@
 // -----------------------------------------------------------------------------------------
 // | F1  | F2  | F3  | F4  | F5  |     |SC_UP|SC_L | MUP |SC_R |     |
 // | F6  | F7  | F8  | F9  | F10 |     |SC_DN|MLEFT|MDOWN|MRGHT|     |
-// | F11 | F12 | F13 | F14 | F15 |     |     | MB4 | MB5 |     |     |
-//             |     |trans|     |     |LCLK |MCLK |RCLK |
+// | F11 | F12 | F13 | F14 | F15 |     |     |     |     |     |     |
+//             |trans|     |     |     |LCLK |MCLK |RCLK |
             bindings = <
-    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &msc SCRL_UP  &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT  &none
+    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &msc SCRL_UP  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &none
     &kp F6         &kp F7         &kp F8         &kp F9         &kp F10      &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none
-    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &mkp MB4       &mkp MB5       &none          &none
-                                  &none          &trans         &none             &mkp LCLK      &mkp MCLK      &mkp RCLK
+    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &none          &none          &none          &none
+                                  &trans         &none          &none             &mkp LCLK      &mkp MCLK      &mkp RCLK
             >;
         };
 
         media_layer {
 // -----------------------------------------------------------------------------------------
 // |     |     |     |     |BTCLR|     |     |     |DP_DN|DP_UP|     |
-// | BT0 | BT1 | BT2 | BT3 | BT4 |     |     |MUTE |V_DN |V_UP |     |
+// | BT1 | BT2 | BT3 | BT4 | BT5 |     |     |MUTE |V_DN |V_UP |     |
 // |     |     |     |     |     |     |     | P/P |PREV |NEXT |     |
 //             |     |     |     |     |     |trans|     |
             bindings = <
