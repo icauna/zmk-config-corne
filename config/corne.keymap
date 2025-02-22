@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
@@ -82,6 +81,15 @@
             mods = <(MOD_LSFT)>;
         };
 
+        ht_mm_sft: hold_tap_mod_morph_shift {
+            compatible = "zmk,behavior-hold-tap";
+            flavor = "balanced";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&mm_sft>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+        };
+
         mm_st: mod_morph_space_tab {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -103,7 +111,7 @@
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &hml LCTRL A   &hml LALT S    &hml LGUI D    &hml LSHIFT F  &kp G             &kp H          &hmr RSHIFT J  &hmr RGUI K    &hmr RALT L    &hmr RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          AS(COMMA)      AS(DOT)        AS(FSLH)
-                                  &lt MOUSE TAB  &mm_sft        &lt NUMSYM BSPC   &lt NAV SPACE  &lt MEDIA RET  &kp ESC
+                                  &kp TAB  &ht_mm_sft MOUSE 0   &lt NUMSYM BSPC   &lt NAV SPACE  &lt MEDIA RET  &kp ESC
             >;
         };
 
@@ -153,12 +161,12 @@
 // -----------------------------------------------------------------------------------------
 // | F1  | F2  | F3  | F4  | F5  |     |SC_UP|SC_L | MUP |SC_R |     |
 // | F6  | F7  | F8  | F9  | F10 |     |SC_DN|MLEFT|MDOWN|MRGHT|     |
-// | F11 | F12 | F13 | F14 | F15 |     |     |     |     |     |     |
+// | F11 | F12 | F13 | F14 | F15 |     |     | MB4 | MB5 |     |     |
 //             |trans|     |     |     |LCLK |MCLK |RCLK |
             bindings = <
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &msc SCRL_UP  &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &none
     &kp F6         &kp F7         &kp F8         &kp F9         &kp F10      &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none
-    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &none          &none          &none          &none
+    &kp F11        &kp F12        &kp F13        &kp F14        &kp F15           &none          &mkp MB4       &mkp MB5       &none          &none
                                   &trans         &none          &none             &mkp LCLK      &mkp MCLK      &mkp RCLK
             >;
         };
