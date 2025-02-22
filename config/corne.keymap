@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+// #define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
+// #define ZMK_POINTING_DEFAULT_SCRL_VAL 20
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -143,7 +143,8 @@
             bindings = <
     &none          &none          &none          &none          &tog COLEMAK      &kp PG_UP      &kp HOME       &kp UP         &kp END        &kp INS
     &kp LCTRL      &kp LALT       &kp LGUI       &kp LSHIFT     &none             &kp PG_DN      &kp LEFT       &kp DOWN       &kp RIGHT      &kp DEL
-    &kp LG(Y)      &kp LG(Z)      &kp LG(V)      &kp LG(C)      &kp LG(X)         &kp RG(X)      &kp RG(C)      &kp RG(V)      &kp RG(Z)      &kp RG(Y)
+    &none          &none          &none          &none          &none             &none          &none          &none          &none          &none
+//    &kp LG(Y)      &kp LG(Z)      &kp LG(V)      &kp LG(C)      &kp LG(X)         &kp RG(X)      &kp RG(C)      &kp RG(V)      &kp RG(Z)      &kp RG(Y)
                                   &none          &none          &none             &trans         &none          &none
             >;
         };
