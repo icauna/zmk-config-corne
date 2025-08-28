@@ -198,7 +198,7 @@
 //             |     |     |trans|     | SPC | RET |  `  |
             bindings = <
     &kp STAR       AS(N7)         AS(N8)         AS(N9)         &kp PLUS        &ht CARET HASH  &ht EXCL LPAR   &ht AT RPAR    &ht DLLR LT    &ht PRCNT GT
-    &ht RET N0     AS(N4)         AS(N5)         AS(N6)         &ht EQUAL DOT   &kp COMMA  &hmr RSHIFT EQUAL  &hmr RGUI UNDER  &hmr RALT DQT  &hmr RCTRL SQT
+    &ht EQUAL DOT  AS(N4)         AS(N5)         AS(N6)         &ht RET N0      &kp COMMA  &hmr RSHIFT EQUAL  &hmr RGUI UNDER  &hmr RALT DQT  &hmr RCTRL SQT
     &kp FSLH       AS(N1)         AS(N2)         AS(N3)         &kp MINUS        &ht QMARK BSLH  AS(LBKT)       AS(RBKT)      &ht AMPS COLON  &ht PIPE SEMI
                                   &none          &none          &trans            &mm_st         &kp RET        AS(GRAVE)
             >;
