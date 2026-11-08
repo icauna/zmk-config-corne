@@ -153,12 +153,12 @@
 // |  Q  |  W  |  E  |  R  |  T  |     |  Y  |  U  |  I  |  O  |  P  |
 // |  A  |  S  |  D  |  F  |  G  |     |  H  |  J  |  K  |  L  |  '  |
 // |  Z  |  X  |  C  |  V  |  B  |     |  N  |  M  |  ,  |  .  |  ?  |
-//             | TAB | RET | BSP |     | SPC | SFT | ESC |
+//             | TAB |CAPS | BSP |     | SPC | RET | ESC |
             bindings = <
     &kp Q          &kp W          &kp E          &kp R          &kp T             &kp Y          &kp U          &kp I          &kp O          &kp P
     &hml LCTRL A   &hml LALT S    &hml LGUI D    &hml LSHIFT F  &kp G             &kp H          &hmr RSHIFT J  &hmr RGUI K    &hmr RALT L    &hmr RCTRL SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N          &kp M          &kp COMMA      &kp DOT        &mm_qe
-                                  &kp TAB   &lt MOUSE RET   &lt NUMSYM BSPC       &lt NAV SPACE  &mt RSHIFT CAPS  &lt MEDIA ESC
+                                &kp TAB   &lt MOUSE CAPSLOCK   &lt NUMSYM BSPC    &lt NAV SPACE  &kp RET        &lt MEDIA ESC
             >;
         };
 
@@ -167,12 +167,12 @@
 // |  Q  |  W  |  F  |  P  |  B  |     |  J  |  L  |  U  |  Y  |  '  |
 // |  A  |  R  |  S  |  T  |  G  |     |  M  |  N  |  E  |  I  |  O  |
 // |  Z  |  X  |  C  |  D  |  V  |     |  K  |  H  |  ,  |  .  |  ?  |
-//             | TAB | RET | BSP |     | SPC | SFT | ESC |
+//             | TAB |CAPS | BSP |     | SPC | RET | ESC |
             bindings = <
     &kp Q          &kp W          &kp F          &kp P          &kp B             &kp J          &kp L          &kp U          &kp Y          &kp SQT
     &hml LCTRL A   &hml LALT R    &hml LGUI S    &hml LSHIFT T  &kp G             &kp M          &hmr RSHIFT N  &hmr RGUI E    &hmr RALT I    &hmr RCTRL O
     &kp Z          &kp X          &kp C          &kp D          &kp V             &kp K          &kp H          &kp COMMA      &kp DOT        &mm_qe
-                                  &kp TAB   &lt MOUSE RET   &lt NUMSYM BSPC       &lt NAV SPACE  &mt RSHIFT CAPS  &lt MEDIA ESC
+                                &kp TAB   &lt MOUSE CAPSLOCK   &lt NUMSYM BSPC    &lt NAV SPACE  &kp RET        &lt MEDIA ESC
             >;
         };
 
