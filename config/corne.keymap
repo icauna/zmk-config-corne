@@ -45,11 +45,8 @@
         caps_macro: caps_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp CAPS>
-                , <&macro_wait_time 80>
-                , <&macro_release &kp CAPS>
-                ;
+            bindings = <&kp CAPS>;
+            tap-ms = <100>;
         };
     };
 
